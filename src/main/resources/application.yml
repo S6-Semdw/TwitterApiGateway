@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: TwitterApiGateway
+  cloud:
+    gateway:
+      routes:
+        - id: TWITTERTWEETSERVICE
+          uri: lb://TWITTERTWEETSERVICE
+          predicates:
+            - Path=/api/**
+        - id: TWITTERUSERSERVICE
+          uri: lb://TWITTERUSERSERVICE
+          predicates:
+            - Path=/api/**
